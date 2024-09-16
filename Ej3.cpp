@@ -12,8 +12,46 @@ de socios actualizada.*/
 using namespace std;
 
 int main() {
+    ArbolBinario<int> gym;
 
-    cout << "Ejercicio N° 3" << endl;
+    cout << "\nEstructura del sistema original : \n" <<endl;
+    gym.put(500);
+    gym.put(250);
+    gym.put(750);
+    gym.put(100);
+    gym.put(300);
+    gym.put(600);
+    gym.put(800);
+
+    gym.print();
+
+    gym.remove(250);
+    cout << "\nse da la baja del usuario: 250"<<endl;
+    gym.print();
+
+    int usuario = 0;
+
+    try {
+        usuario = gym.search(300);
+        cout << "\nEl Usuario "<< usuario <<" esta activo en el gym." <<endl;
+    } catch (int e) {
+        if (e == 404) {
+            cout << "\nEl Usuario  no está en el gym." <<endl;
+        }
+    }
+
+    try {
+        usuario = gym.search(700);
+        cout << "\nEl Usuario "<< usuario <<" esta activo en el gym." <<endl;
+    } catch (int e) {
+        if (e == 404) {
+           // int usuario = gym.search(700);
+            cout << "\nEl Usuario no esta en el gym." <<endl;
+        }
+    }
+    // Imprimir la estructura del árbol después de la eliminación
+    cout << "\nEstructura del sistema: \n" <<endl;
+    gym.print(); // Imprime el árbol en orden (en este caso, por IDs de libros)
 
     return 0;
 }
